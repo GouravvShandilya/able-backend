@@ -62,10 +62,10 @@ const adminModel = new mongoose.Schema(
         ref: "usermodel",
       },
     ],
-    invoices:[
+    collection:[
       {
        type: mongoose.Schema.Types.ObjectId,
-       ref: "invoice",
+       ref: "collection",
       }
      ]
   },

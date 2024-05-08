@@ -101,7 +101,8 @@ exports.finduserbyname = catchAsyncErrors((req, res, next) => __awaiter(void 0, 
     res.json({ users: foundedUser });
 }));
 exports.allUser = catchAsyncErrors((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const foundedUser = yield UserModel.find({}).populate("revenue");
+    var _a;
+    const foundedUser = yield ((_a = UserModel.find({})) === null || _a === void 0 ? void 0 : _a.populate("collection"));
     res.json({ users: foundedUser });
 }));
 exports.deleteUser = catchAsyncErrors((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {

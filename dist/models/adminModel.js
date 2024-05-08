@@ -65,10 +65,10 @@ const adminModel = new mongoose_1.default.Schema({
             ref: "usermodel",
         },
     ],
-    invoices: [
+    collection: [
         {
             type: mongoose_1.default.Schema.Types.ObjectId,
-            ref: "invoice",
+            ref: "collection",
         }
     ]
 }, { timestamps: true });

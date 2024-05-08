@@ -21,7 +21,7 @@ const userModel = new mongoose_1.default.Schema({
         type: String,
         required: true,
     },
-    revenue: [
+    collection: [
         {
             type: mongoose_1.default.Schema.Types.ObjectId,
             ref: "collection",
@@ -31,7 +31,7 @@ const userModel = new mongoose_1.default.Schema({
         type: String,
         required: true,
     },
-    fullAddress: {
+    Address: {
         type: String,
         required: true,
     },
@@ -59,12 +59,6 @@ const userModel = new mongoose_1.default.Schema({
         type: Boolean,
         default: false,
     },
-    invoices: [
-        {
-            type: mongoose_1.default.Schema.Types.ObjectId,
-            ref: "invoice",
-        },
-    ],
 });
 userModel.pre("save", function () {
     if (!this.isModified("password")) {
@@ -73,7 +67,7 @@ userModel.pre("save", function () {
     let salt = bcrypt.genSaltSync(10);
     this.password = bcrypt.hashSync(this.password, salt);
 });
-userModel.methods.compareUserPassword = function (password) {
+userModel.methods.CompareUserPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
 userModel.methods.getJwtToken = function () {

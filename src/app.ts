@@ -44,6 +44,7 @@ app.use("/admin", require("./routes/adminRoutes"));
 app.use("/user", require("./routes/userRoutes"));
 app.use("/customer", require("./routes/customerRoutes"));
 app.use("/invoice", require("./routes/invoiceRoutes"));
+app.use("/collection", require("./routes/collectionRoutes"));
 
 
 //error handling

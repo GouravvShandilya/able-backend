@@ -17,12 +17,14 @@ const errorHandler_1 = require("../utils/errorHandler");
 const sendToken_1 = require("../utils/sendToken");
 const collectionModel = require("../models/collectionModel");
 const customerModel = require("../models/customerModel");
+const { CompareUserPassword } = require("../models/userModels");
 exports.userHomepage = catchAsyncErrors((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     res.json({ message: "homepage" });
 }));
 exports.loginUser = catchAsyncErrors((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield UserModel.findOne({ email: req.body.email });
-    const isMatch = user.compareUserPassword(req.body.password);
+    const isMatch = user.CompareUserPassword(req.body.password);
+    console.log(isMatch);
     if (!isMatch)
         return next(new errorHandler_1.errorHandler("wrong crediendials", 404));
     (0, sendToken_1.sendtoken)(user, 201, res);
@@ -32,7 +34,8 @@ exports.signoutUser = catchAsyncErrors((req, res, next) => __awaiter(void 0, voi
     res.json({ message: "Signed out" });
 }));
 exports.currentUser = catchAsyncErrors((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const currentUser = yield UserModel.findOne({ _id: req.Userid }).populate("revenue");
+    var _a;
+    const currentUser = yield ((_a = UserModel.findOne({ _id: req.Userid })) === null || _a === void 0 ? void 0 : _a.populate("collection"));
     res.json({
         message: "user found",
         user: currentUser,

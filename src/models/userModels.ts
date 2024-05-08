@@ -17,7 +17,7 @@ const userModel = new mongoose.Schema({
     type: String,
     required: true,
   },
-  revenue: [
+  collection: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "collection",
@@ -27,7 +27,7 @@ const userModel = new mongoose.Schema({
     type: String,
     required: true,
   },
-  fullAddress: {
+  Address: {
     type: String,
     required: true,
   },
@@ -57,12 +57,6 @@ const userModel = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  invoices: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "invoice",
-    },
-  ],
 });
 
 userModel.pre("save", function () {
@@ -73,7 +67,7 @@ userModel.pre("save", function () {
   this.password = bcrypt.hashSync(this.password, salt);
 });
 
-userModel.methods.compareUserPassword = function (password: any) {
+userModel.methods.CompareUserPassword = function (password: any) {
   return bcrypt.compareSync(password, this.password);
 };
 

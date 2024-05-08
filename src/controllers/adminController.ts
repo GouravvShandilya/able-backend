@@ -122,7 +122,7 @@ export const finduserbyname = catchAsyncErrors(
 
 export const allUser = catchAsyncErrors(
   async (req: any, res: any, next: any) => {
-    const foundedUser = await UserModel.find({}).populate("revenue");
+    const foundedUser = await UserModel.find({})?.populate("collection");
 
     res.json({ users: foundedUser });
   }

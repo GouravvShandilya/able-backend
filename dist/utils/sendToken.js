@@ -6,14 +6,13 @@ const sendtoken = (user, statusCode, res) => {
     const options = {
         expires: new Date(Date.now() +
             //   process.env.COOKIE_EXPIRE
-            1
-                * 24 * 60 * 60 * 1000),
+            1 * 24 * 60 * 60 * 1000),
         httpOnly: true,
         // secure:true
     };
     res
         .status(statusCode)
-        .cookie("token", token, options)
+        // .cookie("token", token, options)
         .json({ success: true, user: user, serviceToken: token });
 };
 exports.sendtoken = sendtoken;

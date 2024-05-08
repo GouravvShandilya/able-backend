@@ -2,10 +2,9 @@ export const sendtoken = (user: any, statusCode: any, res: any) => {
   const token = user.getJwtToken();
   const options = {
     expires: new Date(
-      Date.now() + 
-    //   process.env.COOKIE_EXPIRE
-    1
-       * 24 * 60 * 60 * 1000
+      Date.now() +
+        //   process.env.COOKIE_EXPIRE
+        1 * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
     // secure:true
@@ -13,6 +12,6 @@ export const sendtoken = (user: any, statusCode: any, res: any) => {
 
   res
     .status(statusCode)
-    .cookie("token", token, options)
-    .json({ success: true, user: user,serviceToken:token });
+    // .cookie("token", token, options)
+    .json({ success: true, user: user, serviceToken: token });
 };

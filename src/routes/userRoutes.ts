@@ -18,4 +18,7 @@ router.get("/currentUser", isAuthenticated, currentUser);
 router.post("/addMoneyCollection", isAuthenticated, addMoneyCollection);
 router.get("/getStatistics", isAuthenticated, Statistics);
 router.post("/updateUser", isAuthenticated, updateUser);
+
+
+
 module.exports = router;

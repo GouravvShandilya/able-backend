@@ -5,6 +5,7 @@ import { errorHandler } from "../utils/errorHandler";
 import { sendtoken } from "../utils/sendToken";
 const collectionModel = require("../models/collectionModel");
 const customerModel = require("../models/customerModel");
+const { CompareUserPassword } = require("../models/userModels");
 
 export const userHomepage = catchAsyncErrors(
   async (req: any, res: any, next: any) => {
@@ -15,13 +16,14 @@ export const userHomepage = catchAsyncErrors(
 export const loginUser = catchAsyncErrors(
   async (req: any, res: any, next: any) => {
     const user = await UserModel.findOne({ email: req.body.email });
-
-    const isMatch = user.compareUserPassword(req.body.password);
-
+    const isMatch = user.CompareUserPassword(req.body.password);
+    console.log(isMatch);
     if (!isMatch) return next(new errorHandler("wrong crediendials", 404));
     sendtoken(user, 201, res);
   }
 );
+
+
 
 export const signoutUser = catchAsyncErrors(
   async (req: any, res: any, next: any) => {
@@ -33,8 +35,8 @@ export const signoutUser = catchAsyncErrors(
 
 export const currentUser = catchAsyncErrors(
   async (req: any, res: any, next: any) => {
-    const currentUser = await UserModel.findOne({ _id: req.Userid }).populate(
-      "revenue"
+    const currentUser = await UserModel.findOne({ _id: req.Userid })?.populate(
+      "collection"
     );
 
     res.json({
