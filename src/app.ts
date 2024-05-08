@@ -3,7 +3,7 @@ const app = express();
 var cors = require("cors");
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Allow requests from all origins
+  origin: 'https://able-frontend.vercel.app/', // Allow requests from all origins
   credentials: true // Allow credentials (e.g., cookies)
 };
 
