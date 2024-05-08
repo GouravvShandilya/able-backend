@@ -3,7 +3,13 @@ const app = express();
 var cors = require("cors");
 
 const corsOptions = {
-  origin: '*', // Allow requests from all origins
+  origin: function (origin: string, callback: (arg0: Error | null, arg1: boolean | undefined) => void) {
+    if (origin === 'https://able-frontend-gouravshandilya69s-projects.vercel.app') {
+      callback(null, true); // Allow the request from the specified origin
+    } else {
+      callback(new Error('Not allowed by CORS')); // Block the request for other origins
+    }
+  },
   credentials: true // Allow credentials (e.g., cookies)
 };
 
