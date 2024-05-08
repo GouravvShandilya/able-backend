@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const mongoose = require("mongoose");
 exports.connectDatabase = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose.connect("mongodb://localhost:27017/test");
+        yield mongoose.connect(process.env.db);
         console.log("Database Connected");
     }
     catch (error) {

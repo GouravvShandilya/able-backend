@@ -9,8 +9,8 @@ const app = (0, express_1.default)();
 exports.app = app;
 var cors = require("cors");
 const corsOptions = {
-    origin: 'http://localhost:3000', // Allow requests from all origins
-    credentials: true // Allow credentials (e.g., cookies)
+    origin: 'https://able-frontend.vercel.app',
+    credentials: true,
 };
 // Apply CORS middleware with options
 app.use(cors(corsOptions));
