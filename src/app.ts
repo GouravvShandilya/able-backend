@@ -3,7 +3,7 @@ const app = express();
 var cors = require("cors");
 
 const corsOptions = {
-  origin: 'https://able-frontend.vercel.app',
+  origin: 'https://able-frontend-gouravshandilya69s-projects.vercel.app/',
   credentials: true,
 };
 
