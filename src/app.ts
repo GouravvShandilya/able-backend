@@ -3,20 +3,21 @@ const app = express();
 var cors = require("cors");
 
 const corsOptions = {
-  origin: function (origin: string, callback: (arg0: Error | null, arg1: boolean | undefined) => void) {
-    if (origin === 'https://able-frontend-gouravshandilya69s-projects.vercel.app') {
+  origin: function (
+    origin: string,
+    callback: (arg0: Error | null, arg1: boolean | undefined) => void
+  ) {
+    if (
+      origin === "https://able-frontend-gouravshandilya69s-projects.vercel.app"
+    ) {
       callback(null, true); // Allow the request from the specified origin
-    } else {
-      callback(new Error('Not allowed by CORS')); // Block the request for other origins
     }
   },
-  credentials: true // Allow credentials (e.g., cookies)
+  credentials: true, // Allow credentials (e.g., cookies)
 };
 
 // Apply CORS middleware with options
 app.use(cors(corsOptions));
-
-
 
 //env
 import dotenv from "dotenv";
@@ -51,7 +52,6 @@ app.use("/user", require("./routes/userRoutes"));
 app.use("/customer", require("./routes/customerRoutes"));
 app.use("/invoice", require("./routes/invoiceRoutes"));
 app.use("/collection", require("./routes/collectionRoutes"));
-
 
 //error handling
 const errorHandler = require("./utils/errorHandler");
